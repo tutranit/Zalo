@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181BB7EA235983B200FAB8B5 /* AddFriend_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BB7E9235983B200FAB8B5 /* AddFriend_ViewController.swift */; };
+		181BB7EC235999DC00FAB8B5 /* Contacts_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BB7EB235999DC00FAB8B5 /* Contacts_ViewController.swift */; };
+		181BB7EE2359F00000FAB8B5 /* ContactsSelected._ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BB7ED2359F00000FAB8B5 /* ContactsSelected._ViewController.swift */; };
+		181BB7F02359F01700FAB8B5 /* OfficialSelected_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BB7EF2359F01700FAB8B5 /* OfficialSelected_ViewController.swift */; };
+		181C28D3235C658800A21684 /* EditYourBio_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C28D2235C658800A21684 /* EditYourBio_ViewController.swift */; };
+		181D65B4235CD3DC00EC8D0C /* Groups_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D65B3235CD3DB00EC8D0C /* Groups_ViewController.swift */; };
 		182554CE23588C1D0045DDB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182554CD23588C1D0045DDB5 /* AppDelegate.swift */; };
 		182554D023588C1D0045DDB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182554CF23588C1D0045DDB5 /* SceneDelegate.swift */; };
 		182554D223588C1D0045DDB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182554D123588C1D0045DDB5 /* ViewController.swift */; };
 		182554D523588C1D0045DDB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182554D323588C1D0045DDB5 /* Main.storyboard */; };
 		182554D723588C200045DDB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182554D623588C200045DDB5 /* Assets.xcassets */; };
 		182554DA23588C200045DDB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182554D823588C200045DDB5 /* LaunchScreen.storyboard */; };
+		1828E3F52361A247002F9BEB /* ContactDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828E3F42361A247002F9BEB /* ContactDataSource.swift */; };
+		182AC8032362B3DF003C5AA8 /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182AC8022362B3DF003C5AA8 /* ContactsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181BB7E9235983B200FAB8B5 /* AddFriend_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriend_ViewController.swift; sourceTree = "<group>"; };
+		181BB7EB235999DC00FAB8B5 /* Contacts_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts_ViewController.swift; sourceTree = "<group>"; };
+		181BB7ED2359F00000FAB8B5 /* ContactsSelected._ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsSelected._ViewController.swift; sourceTree = "<group>"; };
+		181BB7EF2359F01700FAB8B5 /* OfficialSelected_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialSelected_ViewController.swift; sourceTree = "<group>"; };
+		181C28D2235C658800A21684 /* EditYourBio_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditYourBio_ViewController.swift; sourceTree = "<group>"; };
+		181D65B3235CD3DB00EC8D0C /* Groups_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups_ViewController.swift; sourceTree = "<group>"; };
 		182554CA23588C1D0045DDB5 /* AutoLayout-Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutoLayout-Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		182554CD23588C1D0045DDB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		182554CF23588C1D0045DDB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +38,8 @@
 		182554D623588C200045DDB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182554D923588C200045DDB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182554DB23588C200045DDB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1828E3F42361A247002F9BEB /* ContactDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataSource.swift; sourceTree = "<group>"; };
+		182AC8022362B3DF003C5AA8 /* ContactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +79,14 @@
 				182554D623588C200045DDB5 /* Assets.xcassets */,
 				182554D823588C200045DDB5 /* LaunchScreen.storyboard */,
 				182554DB23588C200045DDB5 /* Info.plist */,
+				181BB7E9235983B200FAB8B5 /* AddFriend_ViewController.swift */,
+				181BB7EB235999DC00FAB8B5 /* Contacts_ViewController.swift */,
+				181BB7ED2359F00000FAB8B5 /* ContactsSelected._ViewController.swift */,
+				181BB7EF2359F01700FAB8B5 /* OfficialSelected_ViewController.swift */,
+				181C28D2235C658800A21684 /* EditYourBio_ViewController.swift */,
+				181D65B3235CD3DB00EC8D0C /* Groups_ViewController.swift */,
+				1828E3F42361A247002F9BEB /* ContactDataSource.swift */,
+				182AC8022362B3DF003C5AA8 /* ContactsModel.swift */,
 			);
 			path = "AutoLayout-Code";
 			sourceTree = "<group>";
@@ -138,9 +162,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181D65B4235CD3DC00EC8D0C /* Groups_ViewController.swift in Sources */,
+				181C28D3235C658800A21684 /* EditYourBio_ViewController.swift in Sources */,
+				181BB7EA235983B200FAB8B5 /* AddFriend_ViewController.swift in Sources */,
 				182554D223588C1D0045DDB5 /* ViewController.swift in Sources */,
 				182554CE23588C1D0045DDB5 /* AppDelegate.swift in Sources */,
 				182554D023588C1D0045DDB5 /* SceneDelegate.swift in Sources */,
+				181BB7EE2359F00000FAB8B5 /* ContactsSelected._ViewController.swift in Sources */,
+				181BB7F02359F01700FAB8B5 /* OfficialSelected_ViewController.swift in Sources */,
+				181BB7EC235999DC00FAB8B5 /* Contacts_ViewController.swift in Sources */,
+				1828E3F52361A247002F9BEB /* ContactDataSource.swift in Sources */,
+				182AC8032362B3DF003C5AA8 /* ContactsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L5US95BXQW;
 				INFOPLIST_FILE = "AutoLayout-Code/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L5US95BXQW;
 				INFOPLIST_FILE = "AutoLayout-Code/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
