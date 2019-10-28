@@ -27,6 +27,8 @@
 		E3AB6D0D236698CD00DE8EC6 /* NewContactDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB6D0C236698CD00DE8EC6 /* NewContactDataSource.swift */; };
 		E3AB6D0F236698D600DE8EC6 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB6D0E236698D600DE8EC6 /* ContactManager.swift */; };
 		E3AB6D112366B25F00DE8EC6 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB6D102366B25F00DE8EC6 /* ContactViewModel.swift */; };
+		E3AB6D142366B83700DE8EC6 /* AvatarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB6D132366B83700DE8EC6 /* AvatarService.swift */; };
+		E3AB6D162366BC4600DE8EC6 /* ColorsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB6D152366BC4600DE8EC6 /* ColorsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		E3AB6D0C236698CD00DE8EC6 /* NewContactDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactDataSource.swift; sourceTree = "<group>"; };
 		E3AB6D0E236698D600DE8EC6 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		E3AB6D102366B25F00DE8EC6 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		E3AB6D132366B83700DE8EC6 /* AvatarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarService.swift; sourceTree = "<group>"; };
+		E3AB6D152366BC4600DE8EC6 /* ColorsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 		182554CC23588C1D0045DDB5 /* AutoLayout-Code */ = {
 			isa = PBXGroup;
 			children = (
+				E3AB6D122366B82300DE8EC6 /* Service */,
 				E3AB6D052366986100DE8EC6 /* DataManager */,
 				E3AB6D042366985C00DE8EC6 /* DataSource */,
 				E3AB6D032366985900DE8EC6 /* View */,
@@ -147,6 +152,15 @@
 				E3AB6D0E236698D600DE8EC6 /* ContactManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		E3AB6D122366B82300DE8EC6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E3AB6D132366B83700DE8EC6 /* AvatarService.swift */,
+				E3AB6D152366BC4600DE8EC6 /* ColorsStore.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3AB6D142366B83700DE8EC6 /* AvatarService.swift in Sources */,
 				181D65B4235CD3DC00EC8D0C /* Groups_ViewController.swift in Sources */,
 				181C28D3235C658800A21684 /* EditYourBio_ViewController.swift in Sources */,
 				181BB7EA235983B200FAB8B5 /* AddFriend_ViewController.swift in Sources */,
@@ -231,6 +246,7 @@
 				E3AB6D09236698A200DE8EC6 /* NewContactModel.swift in Sources */,
 				E3AB6D072366988900DE8EC6 /* ContactViewController.swift in Sources */,
 				182554D023588C1D0045DDB5 /* SceneDelegate.swift in Sources */,
+				E3AB6D162366BC4600DE8EC6 /* ColorsStore.swift in Sources */,
 				181BB7EE2359F00000FAB8B5 /* ContactsSelected._ViewController.swift in Sources */,
 				181BB7F02359F01700FAB8B5 /* OfficialSelected_ViewController.swift in Sources */,
 				181BB7EC235999DC00FAB8B5 /* Contacts_ViewController.swift in Sources */,
