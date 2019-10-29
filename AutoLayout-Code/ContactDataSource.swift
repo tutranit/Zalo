@@ -15,9 +15,9 @@ class ContactDataSource{
     var numberContact : String!
     let userDefault = UserDefaults.standard
     func fetchContactLocal(){
-        var image = userDefault.object(forKey: "imageContacts")
-        var name = userDefault.object(forKey: "nameContacts")
-        var phoneNumber = userDefault.object(forKey: "phoneNumberContacts")
+//        var image = userDefault.object(forKey: "imageContacts")
+//        var name = userDefault.object(forKey: "nameContacts")
+//        var phoneNumber = userDefault.object(forKey: "phoneNumberContacts")
     }
     static func fetchContactDevice(complete:@escaping ([ContactModel],Error) ->()){
         if #available(IOS 8.0, *){
@@ -37,9 +37,9 @@ class ContactDataSource{
                             // Array containing all unified contacts from everywhere
                             var contacts = [CNContact]()
                             contacts.append(contact)
-                            if (contacts.count > 1){
+                            //if (contacts.count > 1){
                                 for phoneNumber in contact.phoneNumbers {
-                                                               if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
+                                                               if let number = phoneNumber.value as? CNPhoneNumber {
                                                                    contactDevice.append(ContactModel(image: contact.imageData!, name: contact.familyName, phoneNumber: number.stringValue))
                                            //                        self.userDefault.set(contact.imageData, forKey: "imageContacts")
                                            //                        self.userDefault.set(contact.familyName, forKey: "nameContacts")
@@ -47,7 +47,7 @@ class ContactDataSource{
                                                                }
                                                            }
                                                            complete(contactDevice,error)
-                            }
+                            //}
                            
                         }
                     

@@ -21,4 +21,6 @@ struct NewContactModel {
     static func getFullName(contact: NewContactModel) -> String {
         return "Example";
     }
+    
+    
 }

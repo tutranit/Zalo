@@ -56,7 +56,8 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell
+        
         if contactsDevice.count > 0{
             let arrayContacts = contactsDevice[indexPath.row]
             if let imageContact = cell.imageView{
@@ -65,8 +66,11 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
                 imageContact.layer.cornerRadius = imageContact.frame.height / 2
                 imageContact.clipsToBounds = true
             }
-            cell.textLabel?.text = arrayContacts.name
-            cell.detailTextLabel?.text = arrayContacts.phoneNumber
+            //cell.addSubview(cell.avatarView)
+            
+            cell.nameLabel.text = arrayContacts.name
+            cell.textLabel?.text = cell.nameLabel.text
+            //cell.num = arrayContacts.phoneNumber
         }
         
         return cell

@@ -36,7 +36,10 @@ struct NewContactViewModel {
     
     static func validatePhoneNumber(phoneNumber: String?) -> Bool {
         // TODO: - Write function validate phone
-        return true;
+        let PHONE_REGEX = "^[3(+84)]\\s\\d{9}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: phoneNumber)
+        return result
     }
     
     static func displayName(contact: NewContactModel) -> String {

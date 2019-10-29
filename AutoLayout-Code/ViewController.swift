@@ -119,7 +119,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cell.textLabel?.text = nameContact[indexPath.section][indexPath.row]
         if indexPath.section == 0{
-            var arrayImageHost : String = imageContract[0][indexPath.row]
+            //var arrayImageHost : String = imageContract[0][indexPath.row]
             if let imageHost = cell.imageView {
             imageHost.frame.size = CGSize(width: 32, height: 32)
             imageHost.layer.cornerRadius = imageHost.frame.height / 2
