@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct NewContactModel {
+struct ContactModel {
     var id: String!
     var firstName: String?
     var lastName: String?
     var phoneNumber: String?
     
     var fullName: String {
-        return NewContactModel.getFullName(contact: self)
+        return ContactModel.getFullName(contact: self)
     }
     
-    static func getFullName(contact: NewContactModel) -> String {
+    static func getFullName(contact: ContactModel) -> String {
         return "Example";
     }
     

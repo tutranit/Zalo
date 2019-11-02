@@ -13,13 +13,31 @@ class ContactTableViewCell: UITableViewCell {
     // bài này dùng tạm autolayout cho nhanh, cách tính frame sẽ học sau
     // Dùng
 
+    var checkboxButton : UIButton = {
+        let btnCheck = UIButton(type: .custom)
+        btnCheck.translatesAutoresizingMaskIntoConstraints = false
+
+        btnCheck.setImage(UIImage(named: "AddIcon"), for: [])
+        btnCheck.setImage(UIImage(named: "Correct"), for: .selected)
+        return btnCheck
+    }()
+    
     var checkboxImageView: UIImageView {
         let imageView = UIImageView()
         // TO DO: - Configure here
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1/2).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+//        self.addSubview(imageView)
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1/2).isActive = true
+//        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+//        imageView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+//        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/15).isActive = true
+//        imageView.clipsToBounds = true
+//        imageView.layer.cornerRadius = imageView.frame.height / 2
+//        imageView.contentMode = .scaleToFill
+//        imageView.backgroundColor = .black
+       
         return imageView
+        
     }
     
     var avatarImageView: UIImageView {
@@ -30,24 +48,20 @@ class ContactTableViewCell: UITableViewCell {
         return imageView
     }
     
-    var avatarView: AvatarView {
+    var avatarView: AvatarView {        
         // TO DO: - Tạo cái này trước:
-        self.avatarView.translatesAutoresizingMaskIntoConstraints = false
-        self.avatarView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        self.avatarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
 
-        return AvatarView(frame: CGRect(origin: .zero, size: .zero))
+        translatesAutoresizingMaskIntoConstraints = false
+        return AvatarView(frame: CGRect(origin: CGPoint(x: self.checkboxImageView.frame.origin.x + 50, y: 10), size: CGSize(width: 50, height: 50)))
     }
     
-    var nameLabel: UILabel {
+    var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.topAnchor.constraint(equalTo: self.topAnchor, constant: 30).isActive = true
-        //label.trailingAnchor.constraint(equalTo: avatarView.leadingAnchor, constant: 10).isActive = true
         label.sizeToFit()
-        label.frame = CGRect(x: self.frame.width - 50, y: self.frame.height / 2, width: 50, height: 50)
+ 
         return label
-    }
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -56,6 +70,11 @@ class ContactTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.addSubview(checkboxButton)
+        self.addSubview(nameLabel)
+        
+        updateConstraints()
+        
     }
     
     func configureWithViewModel(_ contactViewModel: NewContactViewModel) {
@@ -63,12 +82,21 @@ class ContactTableViewCell: UITableViewCell {
         
         self.avatarView.configureWithContactViewModel(contactViewModel)
     }
-    
+
     override func updateConstraints() {
         // TO DO: - Implement autolayout here
         // phải gọi constraint như sau: https://developer.apple.com/videos/play/wwdc2018/220 slide trang 31
-        var constraint = [NSLayoutConstraint]()
-//        constraint += NSLayoutConstraint.constraints(withVisualFormat: <#T##String#>, options: <#T##NSLayoutConstraint.FormatOptions#>, metrics: <#T##[String : Any]?#>, views: <#T##[String : Any]#>)
+
+//        self.addSubview(checkboxButton)
+//        self.addSubview(avatarView)
+//        self.addSubview(nameLabel)
+        let view = ["checkbox":checkboxButton/*,"avatarView":avatarView*/,"nameLabel":nameLabel]
+        for key in view.keys{
+            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[\(key)]", options: [], metrics: nil, views: view))
+        }
+        
         super.updateConstraints()
     }
+    
+   
 }

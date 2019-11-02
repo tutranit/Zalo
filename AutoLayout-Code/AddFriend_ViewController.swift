@@ -10,7 +10,8 @@ import UIKit
 import Contacts
 import ContactsUI
 class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    
+    var mflag : Bool = false
+    //var imageChange = UIImageView()
     var contactsDevice: [ContactModel] = []
     @IBOutlet weak var tableViewContacts: UITableView!
     let userDefault = UserDefaults.standard
@@ -52,35 +53,20 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return contactsDevice.count
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell
         
-        if contactsDevice.count > 0{
             let arrayContacts = contactsDevice[indexPath.row]
-            if let imageContact = cell.imageView{
-                imageContact.image = UIImage(data: arrayContacts.image)
-                imageContact.frame.size = CGSize(width: 32, height: 32)
-                imageContact.layer.cornerRadius = imageContact.frame.height / 2
-                imageContact.clipsToBounds = true
-            }
-            //cell.addSubview(cell.avatarView)
-            
-            cell.nameLabel.text = arrayContacts.name
-            cell.textLabel?.text = cell.nameLabel.text
-            //cell.num = arrayContacts.phoneNumber
-        }
-        
+            cell.nameLabel.text = arrayContacts.firstName
+        cell.checkboxButton.setImage(UIImage(named: "AddIcon"), for: .normal)
+            cell.addSubview(cell.avatarView)
         return cell
        }
     
-
-    struct Contacts {
-        let image : Data!
-        let name : String!
-        let phoneNumber : String!
-    }
-
+   
+   
+  
 }

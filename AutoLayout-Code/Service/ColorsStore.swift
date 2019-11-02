@@ -17,7 +17,7 @@ struct ColorsStore {
         
     }
     
-    private func hashToGetColorFromContact(_ contact: NewContactModel) -> String {
+    private func hashToGetColorFromContact(_ contact: ContactModel) -> String {
         // TO DO: - Think to a simple hash contact this
         return ""
     }
@@ -32,12 +32,12 @@ struct ColorsStore {
     // TO DO: - Beautiful color from telegram
     private let gradientColors: [Int: [UIColor]] = [:]
     
-    func colorByContact(_ contact: NewContactModel) -> UIColor {
+    func colorByContact(_ contact: ContactModel) -> UIColor {
         // TO DO: - Implement this
         return colors[1] ?? UIColor.black
     }
     
-    func gradientColorsByContact(_ contact: NewContactModel) -> [UIColor] {
+    func gradientColorsByContact(_ contact: ContactModel) -> [UIColor] {
         // TO DO: - Implement this
         return gradientColors[1] ?? [UIColor.black, UIColor.blue]
     }

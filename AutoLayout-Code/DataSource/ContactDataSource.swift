@@ -2,7 +2,7 @@
 //  ContactDataSource.swift
 //  AutoLayout-Code
 //
-//  Created by Apple on 10/24/19.
+//  Created by ManTran on 10/28/19.
 //  Copyright © 2019 Apple. All rights reserved.
 //
 
@@ -10,14 +10,8 @@ import Foundation
 import ContactsUI
 import AddressBook
 class ContactDataSource{
-    var imageContact : Data!
-    var nameContact : String!
-    var numberContact : String!
     let userDefault = UserDefaults.standard
     func fetchContactLocal(){
-//        var image = userDefault.object(forKey: "imageContacts")
-//        var name = userDefault.object(forKey: "nameContacts")
-//        var phoneNumber = userDefault.object(forKey: "phoneNumberContacts")
     }
     static func fetchContactDevice(complete:@escaping ([ContactModel],Error) ->()){
         if #available(IOS 8.0, *){
@@ -34,21 +28,16 @@ class ContactDataSource{
                         
                         try contactStore.enumerateContacts(with: request){
                                 (contact, stop) in
-                            // Array containing all unified contacts from everywhere
                             var contacts = [CNContact]()
                             contacts.append(contact)
-                            //if (contacts.count > 1){
                                 for phoneNumber in contact.phoneNumbers {
-                                                               if let number = phoneNumber.value as? CNPhoneNumber {
-                                                                   contactDevice.append(ContactModel(image: contact.imageData!, name: contact.familyName, phoneNumber: number.stringValue))
-                                           //                        self.userDefault.set(contact.imageData, forKey: "imageContacts")
-                                           //                        self.userDefault.set(contact.familyName, forKey: "nameContacts")
-                                           //                        self.userDefault.set(number.stringValue, forKey: "phoneNumberContacts")
-                                                               }
-                                                           }
-                                                           complete(contactDevice,error)
-                            //}
-                           
+                                   if let number = phoneNumber.value as? CNPhoneNumber {
+                                    contactDevice.append(ContactModel(id: "", firstName: contact.familyName, lastName: contact.givenName, phoneNumber: number.stringValue))
+                                    
+                                    }
+                                    
+                            }
+                            complete(contactDevice,error)
                         }
                     
                     } catch {
@@ -68,10 +57,5 @@ class ContactDataSource{
         }
         
 
-    }
-    struct Contacts {
-        let image : Data!
-        let name : String!
-        let phoneNumber : String!
     }
 }

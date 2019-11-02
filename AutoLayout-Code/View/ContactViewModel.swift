@@ -14,7 +14,7 @@ struct NewContactViewModel {
     var phoneNumber: String?
     var displayName: String!
     
-    static func newContactViewModel(contact: NewContactModel) -> NewContactViewModel {
+    static func newContactViewModel(contact: ContactModel) -> NewContactViewModel {
         // TODO: - parse viewmodel from model
         // 1. get AlphabetChar
         let alphabetCharacter = NewContactViewModel.alphabetCharacter(name: contact.fullName)
@@ -42,7 +42,7 @@ struct NewContactViewModel {
         return result
     }
     
-    static func displayName(contact: NewContactModel) -> String {
+    static func displayName(contact: ContactModel) -> String {
         // TODO: - Write function get fullname
         contact.fullName
     }

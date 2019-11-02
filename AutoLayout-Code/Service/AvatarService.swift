@@ -20,22 +20,22 @@ class AvatarService {
         self.avatarQueue = DispatchQueue(label: "avatarQueue", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
     }
     
-    private func hashFromContact(_ contact: NewContactModel) -> String {
+    private func hashFromContact(_ contact: ContactModel) -> String {
         // TO DO: - need hash at here
         return ""
     }
     
-    func flatColorAvatarByContact(_ contact: NewContactModel, flatColor:UIColor, size: CGSize) -> UIImage? {
+    func flatColorAvatarByContact(_ contact: ContactModel, flatColor:UIColor, size: CGSize) -> UIImage? {
         // TO DO: - Check nếu có trong cache thì lấy ra, không có thì đi tạo avatar -> gán vào cache -> lấy ra
         return nil
     }
     
-    func gradientAvatarByContact(_ contact: NewContactModel, colors:[UIColor], size: CGSize) -> UIImage? {
+    func gradientAvatarByContact(_ contact: ContactModel, colors:[UIColor], size: CGSize) -> UIImage? {
         // TO DO: - Check nếu có trong cache thì lấy ra, không có thì đi tạo avatar -> gán vào cache -> lấy ra
         return nil
     }
     
-    func roundedAvatarViewByContact(_ contact: NewContactModel, colors:[UIColor], size: CGSize) -> UIView! {
+    func roundedAvatarViewByContact(_ contact: ContactModel, colors:[UIColor], size: CGSize) -> UIView! {
         // TO DO: - Implement this
         
         return UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
