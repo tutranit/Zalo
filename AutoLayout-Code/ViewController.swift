@@ -17,7 +17,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     let searchBar = UISearchBar()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hidesBottomBarWhenPushed = true
+        //self.hidesBottomBarWhenPushed = true
         setUpNavigation()
         tableViewMess.delegate = self
         tableViewMess.dataSource = self

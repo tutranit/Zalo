@@ -15,7 +15,6 @@ class ViewController_EditYourBio: UIViewController {
 
         setView()
         setNavigation()
-        tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 

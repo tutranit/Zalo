@@ -32,7 +32,7 @@ class ContactDataSource{
                             contacts.append(contact)
                                 for phoneNumber in contact.phoneNumbers {
                                    if let number = phoneNumber.value as? CNPhoneNumber {
-                                    contactDevice.append(ContactModel(id: "", firstName: contact.familyName, lastName: contact.givenName, phoneNumber: number.stringValue))
+                                    contactDevice.append(ContactModel(id: "", firstName: contact.familyName + " " + contact.givenName + " " + contact.middleName, lastName: contact.givenName, phoneNumber: number.stringValue))
                                     
                                     }
                                     

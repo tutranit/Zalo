@@ -31,7 +31,8 @@ struct NewContactViewModel {
     
     static func alphabetCharacter(name: String) -> String {
         // TODO: - Write function get alphabet character
-        return "example"
+        
+        return String(name.prefix(1))
     }
     
     static func validatePhoneNumber(phoneNumber: String?) -> Bool {
