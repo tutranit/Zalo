@@ -13,17 +13,18 @@ class AvatarView: UIView {
     // AvatarView bao gồm
     // 1. Label
     // 2. Background color view (dùng CAGradient) + conerRadius
-    var character : UILabel {
+    lazy var character : UILabel = {
         let char = UILabel()
         
         char.frame.origin = CGPoint(x: 10, y:  10)
+        char.font.withSize(self.frame.height / 2)
         char.textColor = .black
         char.sizeToFit()
-//        self.addSubview(char)
+        self.addSubview(char)
 //        self.bringSubviewToFront(char)
 //        self.backgroundC  = .blue
         return char
-    }
+    }()
     // ------------------
     override init(frame: CGRect) {
         super.init(frame: frame)

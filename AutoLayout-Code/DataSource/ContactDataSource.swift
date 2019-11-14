@@ -18,7 +18,7 @@ class ContactDataSource{
             let contactStore = CNContactStore()
                     var contactDevice : [ContactModel] = []
                     let error = NSError(domain: "Error", code: 1, userInfo: nil)
-                    let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+            let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
                             CNContactPhoneNumbersKey,
                             CNContactEmailAddressesKey,
                             CNContactImageDataKey
@@ -31,8 +31,15 @@ class ContactDataSource{
                             var contacts = [CNContact]()
                             contacts.append(contact)
                                 for phoneNumber in contact.phoneNumbers {
+                                    
                                    if let number = phoneNumber.value as? CNPhoneNumber {
-                                    contactDevice.append(ContactModel(id: "", firstName: contact.familyName + " " + contact.givenName + " " + contact.middleName, lastName: contact.givenName, phoneNumber: number.stringValue))
+
+                                    if contact.familyName == ""{
+                                         contactDevice.append(ContactModel(id: "", firstName: contact.givenName + " " + contact.middleName, lastName: contact.givenName, phoneNumber: number.stringValue))
+                                    }else{
+                                        contactDevice.append(ContactModel(id: "", firstName:contact.familyName + " " +  contact.givenName + " " + contact.middleName, lastName: contact.givenName, phoneNumber: number.stringValue))
+                                    }
+                                   
                                     
                                     }
                                     

@@ -15,8 +15,10 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
     var removeList : [String] = []
     @IBOutlet weak var tableViewContacts: UITableView!
     let userDefault = UserDefaults.standard
-    var alphabetHeader1 = ["A":[],"B":[],"C":[],"D":[],"E":[],"F":[],"G":[],"H":[],"I":[],"J":[],"K":[],"L":[],"M":[],"N":[],"O":[],"P":[],"Q":[],"R":[],"S":[],"T":[],"U":[],"V":[],"W":[],"X":[],"Y":[],"Z":[],"#":[]] as [String : [String]]
+    var alphabetHeader = ["A":[],"B":[],"C":[],"D":[],"E":[],"F":[],"G":[],"H":[],"I":[],"J":[],"K":[],"L":[],"M":[],"N":[],"O":[],"P":[],"Q":[],"R":[],"S":[],"T":[],"U":[],"V":[],"W":[],"X":[],"Y":[],"Z":[],"#":[]] as [String : [String]]
     var alphabetHeaderTitle = [String]()
+    var indexRowSelected : [Int] = []
+    var indexSectionSelected : [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,19 +37,24 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
     }
    
     func getalphabet(){
-        alphabetHeaderTitle = Array(alphabetHeader1.keys)
+        alphabetHeaderTitle = Array(alphabetHeader.keys)
         alphabetHeaderTitle = alphabetHeaderTitle.sorted(by: {$0 < $1})
         for key in alphabetHeaderTitle{
             
             for name in contactsDevice{
                 
                 if key == String((name.firstName?.prefix(1))!){
-                    var list = alphabetHeader1[key] ?? []
+                    var list = alphabetHeader[key] ?? []
                     list.append(name.firstName!)
-                    alphabetHeader1[key] = list
+                    alphabetHeader[key] = list
+                }
+                else if !alphabetHeaderTitle.contains(String((name.firstName?.prefix(1))!)){
+                    var list = alphabetHeader[key] ?? []
+                    list.append(name.firstName!)
+                    alphabetHeader["#"] = list
                 }
             }
-            if alphabetHeader1[key]?.count == 0{
+            if alphabetHeader[key]?.count == 0{
                 removeList.append(key)
             }
         }
@@ -63,7 +70,7 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
         tableViewContacts.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableViewContacts.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableViewContacts.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableViewContacts.frame.size.height = view.frame.size.height//(view.frame.size.height / 8)
+        tableViewContacts.frame.size.height = view.frame.size.height - (self.tabBarController?.tabBar.frame.size.height)!//(view.frame.size.height / 8)
     }
     
     @objc func returnMainView(){
@@ -74,26 +81,53 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let key = alphabetHeaderTitle[section]
-        let count : Int
-        if let items = alphabetHeader1[key]{
+        var count : Int = 0
+        if let items = alphabetHeader[key]{
             count = items.count
         }
-        else{
-            count = 0
-        }
+
         return count
        }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell
-        print(indexPath.section)
         let key = alphabetHeaderTitle[indexPath.section]
-        if let items = alphabetHeader1[key]{
+         cell.checkboxButton.setImage(UIImage(named: "Correct"), for: .normal)
+        if let items = alphabetHeader[key]{
             cell.nameLabel.text = items[indexPath.row]
+        }
+        if indexRowSelected.contains(indexPath.row) && indexSectionSelected.contains(indexPath.section){
+            cell.checkboxButton.setImage(UIImage(named: "Correct"), for: .normal)
+        }else{
+            cell.checkboxButton.setImage(UIImage(named: "circle"), for: .normal)
         }
         return cell
        }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell        
+//        if indexRowSelected.contains(indexPath.row){
+//            if let indexElement = indexRowSelected.firstIndex(of: indexPath.row){
+//                cell.checkboxButton.setImage(UIImage(named: "circle"), for: .normal)
+//                indexRowSelected.remove(at: indexElement)
+//                indexSectionSelected.remove(at: indexPath.section)
+//            }
+//        }
+//        else{
+            cell.checkboxButton.setImage(UIImage(named: "Correct"), for: .normal)
+            indexRowSelected.append(indexPath.row)
+            indexSectionSelected.append(indexPath.section)
+//        }
+        
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell       
+         if let indexElement = indexRowSelected.firstIndex(of: indexPath.row){
+                        cell.checkboxButton.setImage(UIImage(named: "circle"), for: .normal)
+                        indexRowSelected.remove(at: indexElement)
+                        indexSectionSelected.remove(at: indexPath.section)
+        }
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return alphabetHeaderTitle.count
     }
@@ -101,5 +135,6 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
         
         return alphabetHeaderTitle[section]
     }
+
 
 }

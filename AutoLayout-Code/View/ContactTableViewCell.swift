@@ -8,23 +8,30 @@
 
 import UIKit
 
+protocol ButtonSelect {
+    func didTap(mflag : Bool,button : UIButton)
+}
+
 class ContactTableViewCell: UITableViewCell {
     // translatesAutoresizingMaskIntoConstraints = false dùng nếu muốn dùng auto layout thì phải set cái này về false
     // bài này dùng tạm autolayout cho nhanh, cách tính frame sẽ học sau
     // Dùng
     
     var mflag : Bool = false
-    let btnCheck = UIButton(type: .system)
-    var checkboxButton : UIButton {
+    let btnCheck = UIButton(type: .custom)
+    lazy var checkboxButton : UIButton = {
+        
         self.addSubview(btnCheck)
         btnCheck.translatesAutoresizingMaskIntoConstraints = false
         btnCheck.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         btnCheck.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        btnCheck.setImage(UIImage(named: "circle"), for: [])
-        btnCheck.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
+        btnCheck.setImage(UIImage(named: "circle"), for: .normal)
+        btnCheck.setImage(UIImage(named: "Correct"), for: .selected)
+        btnCheck.addTarget(self, action: #selector(changeImageButton), for: .touchUpInside)
+       
         return btnCheck
-    }
-    @objc func addFriend(){
+    }()
+    @objc func changeImageButton(){
         if mflag == false{
             btnCheck.setImage(.none, for: .normal)
             btnCheck.setImage(UIImage(named: "Correct"), for: .normal)
@@ -58,27 +65,25 @@ class ContactTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         // TO DO: - Configure here, cái này làm sau! đây là cái nâng cao hơn, dùng cache vs avatarStore
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+        backgroundColor = .blue
         return imageView
     }
     
-    var avatarView: AvatarView {
+    lazy var avatarView: AvatarView = {
         // TO DO: - Tạo cái này trước:
-
         translatesAutoresizingMaskIntoConstraints = false
         return AvatarView(frame: CGRect(origin: CGPoint(x: self.checkboxButton.frame.origin.x + 50, y: 10), size: CGSize(width: 50, height: 50)))
-    }
+    }()
     
-    var nameLabel: UILabel  {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.removeFromSuperview()
         self.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         label.leadingAnchor.constraint(equalTo: self.checkboxButton.leadingAnchor, constant: 150).isActive = true
         return label
-    }
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -117,9 +122,9 @@ class ContactTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.nameLabel.text = " "
         super.prepareForReuse()
     }
+    
     
    
 }
