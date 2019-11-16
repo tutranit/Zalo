@@ -106,28 +106,24 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell        
-//        if indexRowSelected.contains(indexPath.row){
-//            if let indexElement = indexRowSelected.firstIndex(of: indexPath.row){
-//                cell.checkboxButton.setImage(UIImage(named: "circle"), for: .normal)
-//                indexRowSelected.remove(at: indexElement)
-//                indexSectionSelected.remove(at: indexPath.section)
-//            }
-//        }
-//        else{
+        if indexRowSelected.contains(indexPath.row) && indexSectionSelected.contains(indexPath.section){
+            if let indexElement = indexRowSelected.firstIndex(of: indexPath.row){
+                print(indexElement)
+                cell.checkboxButton.setImage(UIImage(named: "circle"), for: .normal)
+                indexRowSelected.remove(at: indexElement)
+                indexSectionSelected.remove(at: indexSectionSelected.firstIndex(of: indexPath.section)!)
+            }
+        }
+        else{
             cell.checkboxButton.setImage(UIImage(named: "Correct"), for: .normal)
             indexRowSelected.append(indexPath.row)
             indexSectionSelected.append(indexPath.section)
-//        }
-        
-    }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellContacts", for: indexPath) as! ContactTableViewCell       
-         if let indexElement = indexRowSelected.firstIndex(of: indexPath.row){
-                        cell.checkboxButton.setImage(UIImage(named: "circle"), for: .normal)
-                        indexRowSelected.remove(at: indexElement)
-                        indexSectionSelected.remove(at: indexPath.section)
         }
+        print(indexRowSelected)
+        print(indexSectionSelected)
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return alphabetHeaderTitle.count
     }

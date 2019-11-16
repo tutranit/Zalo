@@ -25,7 +25,7 @@ class ContactTableViewCell: UITableViewCell {
         btnCheck.translatesAutoresizingMaskIntoConstraints = false
         btnCheck.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         btnCheck.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        btnCheck.setImage(UIImage(named: "circle"), for: .normal)
+//        btnCheck.setImage(UIImage(named: "circle"), for: .normal)
         btnCheck.setImage(UIImage(named: "Correct"), for: .selected)
         btnCheck.addTarget(self, action: #selector(changeImageButton), for: .touchUpInside)
        
