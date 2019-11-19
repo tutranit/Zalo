@@ -2,14 +2,15 @@
 
 import UIKit
 import ContactsUI
-class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
     let serialQueue1  = DispatchQueue(label: "GetUrl")
     let serialQueue2  = DispatchQueue(label: "LoadForm")
-    let nameContact = [["Tú","Liêm","Cường","Tú","Liêm","Cường","Tú","Liêm","Cường","Tú","Liêm","Cường","Tú","Liêm","Tú","Liêm","Cường","Tú","Liêm","Cường"],
+    var nameContact = [["Tú","Liêm","Cường","Tú","Liêm","Cường","Tú","Liêm","Cường","Tú","Liêm","Cường","Tú","Liêm","Tú","Liêm","Cường","Tú","Liêm","Cường"],
         ["Triệu","Chánh"],[" "]]
 
     let imageContract = [["AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","AddIcon","messageAdd","AddIcon","messageAdd","AddIcon","messageAdd"],["AddIcon","messageAdd"]]
     
+    var searchContact : [[String]] = []
     
     @IBOutlet weak var tableViewMess: UITableView!
     
@@ -20,6 +21,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         setUpNavigation()
         tableViewMess.delegate = self
         tableViewMess.dataSource = self
+        searchBar.delegate = self
+        searchContact = nameContact
     }
 
 
@@ -45,7 +48,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         searchBar.resignFirstResponder()
     }
- 
 
     @objc func addFriend(){
         let vc = self.storyboard?.instantiateViewController(identifier: "ViewController_AddFriend")
@@ -81,6 +83,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }
     }
     
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let viewFooter = UIView()
         viewFooter.backgroundColor = .gray
@@ -88,12 +91,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 10
-        default:
             return 1
-        }
+
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -103,6 +102,20 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         return nameContact[section].count
        }
        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty{
+            nameContact = searchContact
+            tableViewMess.reloadData()
+            return
+        }
+        nameContact[0] = nameContact[0].filter({ $0.contains(searchText)
+        })
+       
+        tableViewMess.reloadData()
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var identifier : String!
         switch indexPath.section {

@@ -15,12 +15,15 @@ class AvatarView: UIView {
     // 2. Background color view (dùng CAGradient) + conerRadius
     lazy var character : UILabel = {
         let char = UILabel()
-        
-        char.frame.origin = CGPoint(x: 10, y:  10)
-        char.font.withSize(self.frame.height / 2)
+        self.addSubview(char)
+        char.translatesAutoresizingMaskIntoConstraints = false
+        char.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        char.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
+        char.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 5).isActive = true
+        //char.font.withSize(self.frame.height / 2)
         char.textColor = .black
         char.sizeToFit()
-        self.addSubview(char)
+        
 //        self.bringSubviewToFront(char)
 //        self.backgroundC  = .blue
         return char
@@ -28,7 +31,8 @@ class AvatarView: UIView {
     // ------------------
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .blue
+        backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        layer.cornerRadius = self.frame.height / 2
     }
     
     required init?(coder: NSCoder) {

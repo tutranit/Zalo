@@ -23,10 +23,11 @@ class ContactTableViewCell: UITableViewCell {
         
         self.addSubview(btnCheck)
         btnCheck.translatesAutoresizingMaskIntoConstraints = false
-        btnCheck.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        btnCheck.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
         btnCheck.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-//        btnCheck.setImage(UIImage(named: "circle"), for: .normal)
-        btnCheck.setImage(UIImage(named: "Correct"), for: .selected)
+        btnCheck.setImage(UIImage(named: "circle"), for: .normal)
+        btnCheck.frame.size = CGSize(width: 70, height: 70)
+        //btnCheck.setImage(UIImage(named: "Correct"), for: .selected)
         btnCheck.addTarget(self, action: #selector(changeImageButton), for: .touchUpInside)
        
         return btnCheck
@@ -66,13 +67,15 @@ class ContactTableViewCell: UITableViewCell {
         // TO DO: - Configure here, cái này làm sau! đây là cái nâng cao hơn, dùng cache vs avatarStore
         imageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .blue
+        
         return imageView
     }
     
     lazy var avatarView: AvatarView = {
         // TO DO: - Tạo cái này trước:
-        translatesAutoresizingMaskIntoConstraints = false
-        return AvatarView(frame: CGRect(origin: CGPoint(x: self.checkboxButton.frame.origin.x + 50, y: 10), size: CGSize(width: 50, height: 50)))
+        //translatesAutoresizingMaskIntoConstraints = false
+        
+        return AvatarView(frame: CGRect(origin: CGPoint(x: self.checkboxButton.frame.origin.x + 50, y: 5), size: CGSize(width: 30, height: 30)))
     }()
     
     lazy var nameLabel: UILabel = {
@@ -81,7 +84,7 @@ class ContactTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        label.leadingAnchor.constraint(equalTo: self.checkboxButton.leadingAnchor, constant: 150).isActive = true
+        label.leadingAnchor.constraint(equalTo: self.checkboxButton.leadingAnchor, constant: 100).isActive = true
         return label
     }()
     
@@ -92,6 +95,7 @@ class ContactTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.addSubview(avatarView)
   
         
     }

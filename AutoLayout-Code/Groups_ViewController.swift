@@ -115,11 +115,13 @@ class ViewController_Groups: UIViewController,UITableViewDelegate,UITableViewDat
             return viewFooter
         default:
             viewFooter.backgroundColor = .gray
-            viewFooter.frame.size.height = 1
         }
         return viewFooter
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
     struct Groups {
         var imageGroup : String!
         var nameGroup : String!
