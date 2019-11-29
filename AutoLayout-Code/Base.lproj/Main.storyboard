@@ -282,7 +282,7 @@
         <scene sceneID="l4O-QB-It1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4K5-Gv-LBF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Message" id="0H7-sk-fgM"/>
+                    <tabBarItem key="tabBarItem" title="Message" image="Message-icon" id="0H7-sk-fgM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CjB-up-Vn0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -394,4 +394,7 @@
             <point key="canvasLocation" x="3455.072463768116" y="124.55357142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Message-icon" width="32" height="32"/>
+    </resources>
 </document>

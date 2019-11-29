@@ -49,12 +49,17 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
                     contactList[key] = list
                 }
                 else if !alphabetHeaderTitle.contains(String((name.firstName?.prefix(1))!)){
-                    var list = contactList[key] ?? []
-                    list.append(name.firstName!)
-                    contactList["#"] = list
+                    var listout = contactList[key] ?? []
+                    listout.append(name.firstName!)
+                    contactList["#"] = listout
                 }
             }
+            if contactList[key]?.count == 0{
+                contactList[key] = nil
+            }
         }
+        alphabetHeaderTitle = Array(contactList.keys)
+        alphabetHeaderTitle = alphabetHeaderTitle.sorted(by: {$0 < $1})
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -138,18 +143,6 @@ class ViewController_AddFriend: UIViewController,UITableViewDelegate,UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//        var count : Int = 0
-//        for i in 0...contactList.count{
-//            let key = alphabetHeaderTitle[i]
-//
-//            if let items = contactList[key]{
-//                if items.count > 0{
-//                    count += 1
-//                }
-//            }
-//        }
-//
-//        return count
         return alphabetHeaderTitle.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
